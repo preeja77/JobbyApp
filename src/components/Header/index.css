@@ -1,0 +1,69 @@
+.nav-header {
+  display: flex;
+  background-color: #272727;
+
+  justify-content: center;
+}
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1110px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.navbar-large-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1110px;
+}
+.logout-container {
+  justify-content: flex-end;
+}
+.website-logo {
+  width: 110px;
+}
+
+@media screen and (min-width: 768px) {
+  .website-logo {
+    width: 165px;
+  }
+}
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.nav-item {
+  font-family: 'Roboto';
+  text-decoration: none;
+  margin: 10px;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 16px;
+}
+.btn-field {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 8px 16px;
+  background-color: #6366f1;
+  border-radius: 4px;
+  margin-left: 14px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.nav-link {
+  text-decoration: none;
+}

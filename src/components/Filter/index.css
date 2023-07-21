@@ -1,0 +1,40 @@
+/* ---employment-list-&-salary-list */
+
+.employment-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+.employment-head {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 18px;
+  margin-left: 15px;
+  margin-bottom: 25px;
+}
+.employee-input {
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+.label {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 15px;
+  margin-left: 5px;
+}
+/* --salary --*/
+.salary-head {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 18px;
+  margin-left: 15px;
+  margin-top: 35px;
+  margin-bottom: 25px;
+}
+.salary-input {
+  color: #ffffff;
+  margin-bottom: 25px;
+}

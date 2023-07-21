@@ -1,0 +1,128 @@
+.list-item {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  background-color: #272727;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-family: 'Roboto';
+  color: #ffffff;
+}
+.job-card-container {
+  margin: 15px;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 90%;
+  width: 1000px;
+}
+
+.logo-and-title-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.company-logo {
+  width: 80px;
+  height: 80px;
+}
+.title-and-rating-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 0px;
+}
+.job-title {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+.star-and-rating-container {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+.star-icon {
+  color: #fbbf24;
+  margin-right: 5px;
+}
+.job-rating {
+  color: #ffffff;
+}
+.location-and-package-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 0px;
+  margin-top: 20px;
+}
+.type-and-salary-container {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+.location-icon-location-container {
+  display: flex;
+  align-items: center;
+}
+.location {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+.location-icon {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.type {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  margin-left: 5px;
+}
+.salary {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.line {
+  border: 2px solid #64748b;
+  margin: 15px;
+  line-height: 0px;
+}
+.desc-heading {
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 800;
+  font-size: 26px;
+  margin-top: 15px;
+
+  line-height: 0px;
+}
+.job-description {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  width: 95%;
+  max-width: 1000px;
+}
+.second-part-container {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: stretch;
+}
