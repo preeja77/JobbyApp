@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner'
 import './index.css'
 
 import Profile from '../Profile'
-import JobCard from '../JobCard'
+import JobItem from '../JobItem'
 import Header from '../Header'
 import Filter from '../Filter'
 
@@ -58,6 +58,7 @@ class JobsRoute extends Component {
     searchInput: '',
     apiStatus: '',
     checkBoxInputs: [],
+    optionsInput: '',
   }
 
   /* -----Get jobs List --- */
@@ -67,9 +68,9 @@ class JobsRoute extends Component {
   }
 
   getJobsList = async () => {
-    const {searchInput, checkBoxInputs} = this.state
+    const {searchInput, checkBoxInputs, optionsInput} = this.state
     this.setState({apiStatus: apiStatusConstants.loading})
-    const apiUrl = 'https://apis.ccbp.in/jobs'
+    const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${checkBoxInputs}&minimum_package=${optionsInput}&search=${searchInput}`
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       headers: {
@@ -81,6 +82,7 @@ class JobsRoute extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
+      console.log(data)
       const updatedData = data.jobs.map(eachJob => ({
         companyLogoUrl: eachJob.company_logo_url,
         employmentType: eachJob.employment_type,
@@ -136,6 +138,8 @@ class JobsRoute extends Component {
           type="button"
           className="search-button"
           onClick={this.searchButton}
+          // eslint-disable-next-line no-unused-vars
+          data-testid="searchButton"
         >
           <BsSearch className="search-icon" />
         </button>
@@ -171,7 +175,7 @@ class JobsRoute extends Component {
       <>
         <ul>
           {jobsList.map(eachJobDetails => (
-            <JobCard jobDetails={eachJobDetails} key={eachJobDetails.id} />
+            <JobItem jobDetails={eachJobDetails} key={eachJobDetails.id} />
           ))}
         </ul>
       </>
@@ -181,13 +185,13 @@ class JobsRoute extends Component {
   /* --- if Loading, then show renderLoadingView --- */
 
   renderLoadingView = () => (
-    <div className="products-loader-container">
+    <div className="products-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
 
   /* --- if Failure, then show renderFailureView --- */
-  onRetryJobs = () => this.getjobsList()
+  onRetryJobs = () => this.getjobsList
 
   renderFailureView = () => (
     <div className="failure-view-container">
@@ -223,6 +227,39 @@ class JobsRoute extends Component {
     }
   }
 
+  /* -- radioOptions --*/
+
+  getRadioOptionView = id => {
+    this.setState(
+      {
+        optionsInput: id,
+      },
+      this.getJobsList,
+    )
+  }
+
+  /* ---checkBoxInputs --- */
+  updateCheckBoxElements = id => {
+    const {checkBoxInputs} = this.state
+    const data = checkBoxInputs.filter(eachCheckBox => eachCheckBox === id)
+    if (data.length === 0) {
+      this.setState(
+        prevState => ({checkBoxInputs: [...prevState.checkBoxInputs, id]}),
+        this.getJobsList,
+      )
+    } else {
+      const filteredData = checkBoxInputs.filter(
+        eachCheckBox => eachCheckBox !== id,
+      )
+      this.setState(
+        {
+          checkBoxInputs: filteredData,
+        },
+        this.getJobsList,
+      )
+    }
+  }
+
   /* Full_profile */
 
   render() {
@@ -231,17 +268,20 @@ class JobsRoute extends Component {
         <Header />
         <div className="bg-container">
           <div className="profile-and-employment-salary-container">
-            <Profile jobsList={this.getJobsList()} />
+            <Profile jobsList={this.getJobsList} />
             <hr className="line" />
             <div className="employment-container">
               <Filter
                 employmentTypesList={employmentTypesList}
                 salaryRangesList={salaryRangesList}
+                updateCheckBoxElements={this.updateCheckBoxElements}
+                getRadioOptionView={this.getRadioOptionView}
               />
             </div>
           </div>
           <div className="searchInput-and-job-details-container">
             <div className="searchContainer">{this.renderSearchInput()}</div>
+
             {this.renderDetails()}
           </div>
         </div>
